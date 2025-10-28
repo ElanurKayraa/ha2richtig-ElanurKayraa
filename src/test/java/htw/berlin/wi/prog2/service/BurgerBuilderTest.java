@@ -1,4 +1,5 @@
 package htw.berlin.wi.prog2.service;
+import htw.berlin.wi.prog2.service.IllegalBurgerException;
 
 import htw.berlin.wi.prog2.domain.Burger;
 import htw.berlin.wi.prog2.domain.Ingredient;
@@ -84,4 +85,22 @@ class BurgerBuilderTest {
     }
 
     // TODO hier mind. einen Test hinzufügen, der das korrekte Werfen der IllegalBurgerException testet (assertThrows)
+    @Test
+    @DisplayName("throws IllegalBurgerException if burger has less than two ingredients")
+    void throwsExceptionWhenTooFewIngredients() {
+        Ingredient broetchen = new Ingredient("Brötchen", 0.02, 1000);
+
+        // Kein Ingredient hinzugefügt → Exception erwartet
+        assertThrows(IllegalBurgerException.class, () -> new BurgerBuilder().buildPrecomputed());
+
+        // Nur eine Zutat → Exception erwartet
+        assertThrows(IllegalBurgerException.class, () -> new BurgerBuilder().add(broetchen).buildPrecomputed());
+
+        // Kein Ingredient → dynamic Variante
+        assertThrows(IllegalBurgerException.class, () -> new BurgerBuilder().buildDynamicallyComputed());
+
+        // Nur eine Zutat → dynamic Variante
+        assertThrows(IllegalBurgerException.class, () -> new BurgerBuilder().add(broetchen).buildDynamicallyComputed());
+    }
+
 }

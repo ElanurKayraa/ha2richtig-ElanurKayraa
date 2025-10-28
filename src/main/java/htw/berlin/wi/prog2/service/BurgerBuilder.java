@@ -19,18 +19,16 @@ public class BurgerBuilder {
     }
 
     public Burger buildPrecomputed() {
-        // TODO hier stattdessen die neue Klasse PrecomputedBurger verwenden
-        Burger burger = new PrecomputedBurger(ingredients);
-        ingredients.clear(); // wichtig, sonst mischen sich die Zutaten
-        return burger;
-    }
-
-
-    public Burger buildDynamicallyComputed() {
-        // TODO hier stattdessen die neue Klasse DynamicallyComputedBurger verwenden
-        Burger burger = new DynamicallyComputedBurger(ingredients);
+        Burger burger = new PrecomputedBurger(new ArrayList<>(ingredients));
         ingredients.clear();
         return burger;
     }
+
+    public Burger buildDynamicallyComputed() {
+        Burger burger = new DynamicallyComputedBurger(new ArrayList<>(ingredients));
+        ingredients.clear();
+        return burger;
+    }
+
 }
 
