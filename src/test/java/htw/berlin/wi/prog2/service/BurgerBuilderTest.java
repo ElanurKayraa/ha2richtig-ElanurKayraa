@@ -1,6 +1,6 @@
 package htw.berlin.wi.prog2.service;
-import htw.berlin.wi.prog2.service.IllegalBurgerException;
 
+import htw.berlin.wi.prog2.service.IllegalBurgerException;
 import htw.berlin.wi.prog2.domain.Burger;
 import htw.berlin.wi.prog2.domain.Ingredient;
 import org.junit.jupiter.api.DisplayName;
