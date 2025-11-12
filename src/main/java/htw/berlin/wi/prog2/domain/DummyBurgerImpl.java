@@ -19,3 +19,4 @@ public class DummyBurgerImpl implements Burger {
         return List.of("Käse", "Käse", "Käse");
     }
 }
+
